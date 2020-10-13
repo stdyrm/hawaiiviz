@@ -1,30 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## HawaiiViz
+Make information on Hawaii's issues more accessible with minimal narrative.
 
-## Getting Started
+3rd parties are free to use or reference anything on this site as long as they attribute "HawaiiViz" on any publications. Users are encouraged to contact HawaiiViz if any misinformation is found. HawaiiViz is not affiliated with any opinions or views expressed by 3rd parties. Although we strive for objectivity, HawaiiViz will correct any misleading or incorrectly-interpreted information used from our site.
 
-First, run the development server:
+# Primary Tools
+Next.js
+MongoDB
+Mongoose
+React-vis
+D3.js
+Emotion
+Rebass
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+# Folder architecture
+/components -> generic and app-specific components; all components not in an "app-*" folder are generic/reusable
+    /app-* -> app-specific
+    /layout -> presentational
+    /util -> function-performing
+/db -> configuration and schema models for MongoDB database
+/pages
+/public -> static files
+/reference -> static reference Maps
+/services
+/services-client
+/styles
+/util -> Command line utilities primarily for one-time operations (eg. csv import, data parsing). Scripts can be found in package.json.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Data 
+We will only use established/government sources for primary data.
+- State of Hawaii Campaign Spending Commission
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Future Goals
+There are multiple areas we hope to address (eventually...):
+1. Politics - campaign contributions and expenditures
+2. Economy - cost of living, median salaries, job market
+3. Homelessness
+4. Crime
+5. Education
+6. Health
+7. Environment
+8. Agriculture
+9. COVID-19
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# License
+MIT
