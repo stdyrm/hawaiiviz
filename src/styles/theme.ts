@@ -7,14 +7,24 @@ const theme = {
 		background: "#f6f6ff",
 		primary: 'tomato',
 		blue: '#07c',
-		lightgray: '#f6f6ff'
+		lightgray: '#f6f6ff',
+		text: "#2B303B",
+		textRange: [
+				"#C4C9D4",
+				"#A0A9BA",
+				"#7D89A1",
+				"#5E6A82",
+				"#2B303B",
+				"#111318",
+			],
 	},
 	space: [
 		0, 4, 8, 16, 32, 64, 128, 256
 	],
 	fonts: {
-		body: "Poppins, system-ui, sans-serif",
-		heading: 'inherit',
+		// body: "Arial, system-ui, sans-serif",
+		body: "'Poppins', sans-serif",
+		heading: "'Bree Serif', serif",
 		monospace: 'Menlo, monospace',
 	},
 	fontWeights: {
@@ -31,12 +41,14 @@ const theme = {
 		large: '0 0 24px rgba(0, 0, 0, .125)'
 	},
 	variants: {
-	},
-	text: {
+		navLink: {
+			color: "background",
+			fontFamily: "'Poppins'",
+			textDecoration: "none",
+		},
 	},
 	buttons: {
 		primary: {
-			color: '#78290F',
 			bg: 'primary',
 		}
 	},

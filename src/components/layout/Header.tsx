@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Box, Flex } from "rebass";
 
+// components
+import NavLink from "./NavLink";
+
 const Header: React.FC = ({ children }) => {
 	return (
 		<Flex
@@ -9,21 +12,19 @@ const Header: React.FC = ({ children }) => {
 			px={2}
 			py={1}
 			sx={{
-				alignItems: "center"
+				alignItems: "center",
 			}}
 		>
 			{children}
-		<Box
-			mx="auto"
-		/>
+			<Box mx="auto" />
 			<Link href="/">
-				<a>Home</a>
+				<NavLink>Home</NavLink>
 			</Link>
 			<Link href="/app-campaign-expenditures">
-				<a>Campaigns</a>
+				<NavLink>Apps</NavLink>
 			</Link>
 			<Link href="/about">
-				<a>About</a>
+				<NavLink>About</NavLink>
 			</Link>
 		</Flex>
 	);

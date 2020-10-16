@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 
 // services and models
-import Expenditure from "../db/models/expenditure";
+import Expenditure from "../../db/models/expenditure";
 import { getData } from "../services";
 
 // components

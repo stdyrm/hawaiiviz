@@ -1,4 +1,4 @@
-import connectDB from "../db/db-config";
+import connectDB from "../../db/db-config";
 import mongoose from "mongoose";
 
 const getData = async (model: mongoose.Model<mongoose.Document>): Promise<string | undefined> => {

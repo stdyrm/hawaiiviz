@@ -8,8 +8,8 @@ import { EXPENDITURE_CATEGORIES } from "../reference/politics";
 import { IRawData } from "../pages/app-campaign-expenditures";
 
 interface ITree {
-	title: string,
-	children: any[],
+	title: string;
+	children: any[];
 }
 
 export interface ITreeNode {
@@ -20,26 +20,41 @@ export interface ITreeNode {
 	size?: number;
 }
 
+interface IEntry {
+	_id: string;
+	amount: number;
+	candidateName: string;
+	expenditureCategory: string;
+	office: {[key:string]: string};
+}
+
 const createColorScale = (categories: Map<string, string>) => {
 	const arr = Array.from(categories.keys());
 	return scaleOrdinal(schemeSpectral[9]).domain(arr);
 };
 const colorScale = createColorScale(EXPENDITURE_CATEGORIES);
 
-const pivotData = (data: IRawData[], key1: string, key2?: string, key3?: string): ITree => {
-	interface IRollup {
-		data: any;
-		reducer: any;
-		key: any[];
-	}
-
+const pivotData = (
+	data: IRawData[],
+	key1: string,
+	key2?: string,
+	key3?: string
+): ITree => {
 	const nested = rollup(
 		data,
 		(v: any) => sum(v, (d: IRawData) => d["amount"]),
 		(d: any) => d[key1],
 		(d: any) => d[key2 as string],
-		(d: any) => d[key3 as string]
+		(d: IEntry) => d[key3]
 	);
+
+	// const nested = rollup(
+	// 	data,
+	// 	(value: IEntry[]) => sum(value, (d: IEntry) => d.amount),
+	// 	(d: IEntry) => d.office,
+	// 	(d: IEntry) => d.candidateName,
+	// 	(d: IEntry) => d.expenditureCategory
+	// );
 
 	const addChildren = (
 		value: Map<string, any> | number,
@@ -60,7 +75,7 @@ const pivotData = (data: IRawData[], key1: string, key2?: string, key3?: string)
 				leaf.children.push(addChildren(v, k));
 				leaf.children = leaf.children.sort((a: any, b: any) => b.size - a.size);
 			});
-		} else if (typeof value === "number"){
+		} else if (typeof value === "number") {
 			leaf.size = value;
 		}
 		return leaf;

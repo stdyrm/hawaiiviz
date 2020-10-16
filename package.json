@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "format": "prettier --write \"pages/**/*.{js,ts,tsx}\"",
-    "lint": "eslint \"**/*.{js,ts,tsx}\" --quiet --fix",
+		"lint": "eslint \"**/*.{js,ts,tsx}\" --quiet --fix",
+		"test": "jest",
     "build": "next build",
     "start": "next start",
     "export": "node util/cli-export-mongo.mjs --file ccschb.csv"
@@ -31,7 +32,7 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
-    "@types/d3-array": "^2.1.0",
+    "@types/d3-array": "^2.2.0",
     "@types/d3-scale": "^3.1.0",
     "@types/d3-scale-chromatic": "^2.0.0",
     "@types/mongoose": "^5.7.36",
