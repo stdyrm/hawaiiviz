@@ -1,24 +1,6 @@
 // import connectDB from "../../db/db-config";
 // import mongoose from "mongoose";
 
-interface IExpenditureFilter {
-	address1?: string;
-	amount?: number | { $gte: number };
-	authorizedUse?: string;
-	candidateName?: string;
-	city?: string;
-	county?: string;
-	district?: string;
-	expenditureCategory?: string;
-	inOutState?: string;
-	mappingLocation?: string;
-	office?: string;
-	party?: string;
-	vendorName?: string;
-	vendorType?: string;
-	zipCode?: string;
-}
-
 const MOCK_DATA_EXPENDITURES = [
 	{
 		_id: '5f7e5b8fc19a68104c4a96e6',
@@ -57,4 +39,4 @@ const MOCK_DATA_EXPENDITURES = [
 	},
 ];
 
-export default mockMongoose;
+export default MOCK_DATA_EXPENDITURES;

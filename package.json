@@ -7,6 +7,7 @@
     "format": "prettier --write \"pages/**/*.{js,ts,tsx}\"",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --quiet --fix",
     "test": "jest",
+    "cypress": "cypress open",
     "build": "next build",
     "start": "next start",
     "export": "node util/cli-export-mongo.mjs --file ccschb.csv"
@@ -44,6 +45,7 @@
     "@typescript-eslint/parser": "^4.4.0",
     "babel-jest": "^26.5.2",
     "csv-parse": "^4.12.0",
+    "cypress": "^5.4.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.12.0",
@@ -66,8 +68,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
-	},
-	"jest": {
-		"testEnvironment": "node"
-	}
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }

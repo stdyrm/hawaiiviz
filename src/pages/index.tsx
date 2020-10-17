@@ -16,6 +16,6 @@ function Home() {
 			</ContentBox>
 		</Layout>
 	);
-};
+}
 
 export default Home;

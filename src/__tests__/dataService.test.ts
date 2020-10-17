@@ -1,7 +1,6 @@
 import getData from "../services/data-service";
 import Expenditure from "../../db/models/expenditure";
 import mongoose from "mongoose";
-import mockMongoose from "../__mocks__/mockmongoose";
 
 const MOCK_DATA_EXPENDITURES = [
 	{
@@ -41,7 +40,7 @@ const MOCK_DATA_EXPENDITURES = [
 	},
 ];
 
-// jest.mock("mongoose");
+jest.mock("mongoose");
 
 const MockExpenditure = mongoose.model("MockExpenditure", new mongoose.Schema({
 	address1: String,
@@ -68,7 +67,7 @@ const MockExpenditure = mongoose.model("MockExpenditure", new mongoose.Schema({
 }));
 
 test("mock mongodb data is fetched", async () => {
-	const data = await Expenditure.find(jest.fn().mockResolvedValue(mockMongoose));
+	const data = await Expenditure.find(jest.fn().mockResolvedValue(mongoose));
 	expect(data).toBe(MOCK_DATA_EXPENDITURES);
 	console.log(data);
 }, 10000);
