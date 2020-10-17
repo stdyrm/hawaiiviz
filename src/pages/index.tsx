@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Text, Heading } from "rebass";
 import { ContentBox } from "../components/layout";
 
 // components
