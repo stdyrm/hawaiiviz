@@ -21,7 +21,7 @@ export interface IRawData {
 }
 
 const getStaticProps: GetStaticProps = async () => {
-	const response = await getData(Expenditure);
+	const response = await getData(Expenditure, { amount: { $gte: 3000 } });
 	const rawData = JSON.parse(response as string);
 	return {
 		props: {
