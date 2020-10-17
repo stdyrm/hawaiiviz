@@ -45,7 +45,7 @@ const pivotData = (
 		(v: any) => sum(v, (d: IRawData) => d["amount"]),
 		(d: any) => d[key1],
 		(d: any) => d[key2 as string],
-		(d: IEntry) => d[key3]
+		(d: any) => d[key3 as string]
 	);
 
 	// const nested = rollup(
