@@ -4,7 +4,7 @@ import { Box, Flex } from "rebass";
 // components
 import NavLink from "./NavLink";
 
-const Header: React.FC = ({ children }) => {
+const Navbar: React.FC = ({ children }) => {
 	return (
 		<Flex
 			color="background"
@@ -30,4 +30,4 @@ const Header: React.FC = ({ children }) => {
 	);
 };
 
-export default Header;
+export default Navbar;

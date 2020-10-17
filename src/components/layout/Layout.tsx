@@ -2,7 +2,7 @@ import { ThemeProvider } from "emotion-theming";
 import { Heading } from "rebass";
 
 // components
-import Header from "./Header";
+import Navbar from "./Navbar";
 
 import theme from "../../styles/theme";
 
@@ -13,9 +13,9 @@ interface IProps {
 const Layout:React.FC<IProps> = ({ children }) => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Header>
+			<Navbar>
 				<Heading>HawaiiViz</Heading>
-			</Header>
+			</Navbar>
 			{children}
 		</ThemeProvider>
 	);
