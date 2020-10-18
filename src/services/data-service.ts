@@ -1,7 +1,7 @@
-import connectDB from "../../db/db-config";
 import mongoose from "mongoose";
+import queryDatabase from "./query-database";
 
-interface IExpenditureFilter {
+export interface IExpenditureFilter {
 	address1?: string;
 	amount?: number | { $gte: number };
 	authorizedUse?: string;
@@ -21,12 +21,8 @@ interface IExpenditureFilter {
 
 const getData = async (model: mongoose.Model<mongoose.Document>, payload: IExpenditureFilter = {}): Promise<string | undefined> => {
 	if (!model) return;
-	await connectDB();
 	try {
-		console.log("Getting data from DB ...");
-		const data = await model
-			.find(payload)
-			.select({ candidateName: 1, expenditureCategory: 1, amount: 1, office: 1 });
+		const data = await queryDatabase(model, payload);
 		return JSON.stringify(data);
 	} catch (err) {
 		console.error(err.message);
