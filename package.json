@@ -6,7 +6,7 @@
     "dev": "next dev",
     "format": "prettier --write \"pages/**/*.{js,ts,tsx}\"",
     "lint": "eslint \"**/*.{js,ts,tsx}\" --quiet --fix",
-    "test": "jest",
+    "test": "jest -- src",
     "cypress": "cypress open",
     "build": "next build",
     "start": "next start",
