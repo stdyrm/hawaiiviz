@@ -1,12 +1,12 @@
 import { GetStaticProps } from "next";
 
 // services and models
-import Expenditure from "../../db/models/expenditure";
-import { getData } from "../services";
+import Expenditure from "../../../../db/models/expenditure";
+import { getData } from "../../../services";
 
 // components
-import { App } from "../components/app-campaign-expenditures";
-import Layout from "../components/layout/Layout";
+import { App } from "../../../components/app-campaign-expenditures";
+import Layout from "../../../components/layout/Layout";
 
 export interface IProps {
 	rawData: IRawData[];

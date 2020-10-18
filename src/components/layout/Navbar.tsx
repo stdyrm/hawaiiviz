@@ -20,7 +20,7 @@ const Navbar: React.FC = ({ children }) => {
 			<Link href="/">
 				<NavLink>Home</NavLink>
 			</Link>
-			<Link href="/app-campaign-expenditures">
+			<Link href="/apps">
 				<NavLink>Apps</NavLink>
 			</Link>
 			<Link href="/about">

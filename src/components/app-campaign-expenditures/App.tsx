@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Box, Heading, Text } from "rebass";
 import { Select } from "@rebass/forms";
 
@@ -15,7 +15,7 @@ import {
 } from ".";
 
 // interface
-import { IProps, IRawData } from "../../pages/app-campaign-expenditures";
+import { IProps, IRawData } from "../../pages/apps/politics/campaign-expenditures";
 
 export interface ITreeNode {
 	title: string;
@@ -95,7 +95,7 @@ const App: React.FC<IProps> = ({ rawData }) => {
 	}, [filter]);
 
 	return (
-		<>
+		<Fragment>
 			<Heading>Campaign Expenditures</Heading>
 			<Text>
 				These are the campaign expenditures for all candidates in the Hawaii
@@ -144,7 +144,7 @@ const App: React.FC<IProps> = ({ rawData }) => {
 					/>
 				</Box>
 			)}
-		</>
+		</Fragment>
 	);
 };
 

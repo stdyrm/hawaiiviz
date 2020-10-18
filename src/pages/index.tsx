@@ -12,7 +12,7 @@ function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<ContentBox>
-				<main>This is the main body</main>
+				<main data-cy="hawaiiviz">This is the main body</main>
 			</ContentBox>
 		</Layout>
 	);

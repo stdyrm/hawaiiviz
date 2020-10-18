@@ -5,7 +5,7 @@ import { schemeSpectral } from "d3-scale-chromatic";
 import { EXPENDITURE_CATEGORIES } from "../reference/politics";
 
 // interface
-import { IRawData } from "../pages/app-campaign-expenditures";
+import { IRawData } from "../pages/apps/politics/campaign-expenditures";
 
 interface ITree {
 	title: string;
