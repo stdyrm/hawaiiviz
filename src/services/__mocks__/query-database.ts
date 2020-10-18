@@ -1,5 +1,22 @@
-// import connectDB from "../../db/db-config";
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
+
+interface IExpenditureFilter {
+	address1?: string;
+	amount?: number | { $gte: number };
+	authorizedUse?: string;
+	candidateName?: string;
+	city?: string;
+	county?: string;
+	district?: string;
+	expenditureCategory?: string;
+	inOutState?: string;
+	mappingLocation?: string;
+	office?: string;
+	party?: string;
+	vendorName?: string;
+	vendorType?: string;
+	zipCode?: string;
+}
 
 const MOCK_DATA_EXPENDITURES = [
 	{
@@ -39,4 +56,13 @@ const MOCK_DATA_EXPENDITURES = [
 	},
 ];
 
-export default MOCK_DATA_EXPENDITURES;
+// const queryDatabase = async (model: mongoose.Model<mongoose.Document>, payload: IExpenditureFilter = {}): Promise<any | undefined> => {
+const queryDatabase = async () => {
+	const response = await new Promise(resolve => {
+		return resolve(MOCK_DATA_EXPENDITURES); 
+	});
+	return response;
+};
+
+// export default queryDatabase;
+module.exports = queryDatabase;

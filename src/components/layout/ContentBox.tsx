@@ -1,5 +1,5 @@
 import { Box } from "rebass";
-import theme from "../../styles/theme";
+import customTheme from "../../styles/theme";
 
 const ContentBox: React.FC = ({ children }) => {
 	return (
@@ -8,7 +8,7 @@ const ContentBox: React.FC = ({ children }) => {
 				mx: "auto",
 				my: 3,
 				px: 3,
-				color: theme.colors.text[4],
+				color: customTheme.colors.gray[700],
 				fontFamily: "body"
 			}}
 		>

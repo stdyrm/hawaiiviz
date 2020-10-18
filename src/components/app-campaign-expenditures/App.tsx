@@ -129,6 +129,7 @@ const App: React.FC<IProps> = ({ rawData }) => {
 			{data && (
 				<Box>
 					<CampaignTreemap
+						data-cy="campaign-treemap"
 						data={data}
 						selectedNodes={selectedNodes}
 						handleSelectedNodes={handleSelectedNodes}
