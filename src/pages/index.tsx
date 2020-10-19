@@ -4,7 +4,7 @@ import { ContentBox } from "../components/layout";
 // components
 import Layout from "../components/layout/Layout";
 
-function Home() {
+const Home: React.FC = () => {
 	return (
 		<Layout>
 			<Head>
@@ -16,6 +16,6 @@ function Home() {
 			</ContentBox>
 		</Layout>
 	);
-}
+};
 
 export default Home;
