@@ -1,16 +1,17 @@
-import Link from "next/link";
+import { Heading } from "@chakra-ui/core";
 import { Layout } from "../../../components/layout";
+import { NavButton, NavButtonInterface } from "../../../components/layout";
 
 const PoliticsPage: React.FC = () => {
 	return (
 		<Layout>
 			<main>
-				<h1>Politics Page</h1>
-				<Link href="/apps/politics/campaign-expenditures">
-					<a>
-						<h2>Campaign Expenditures</h2>
-					</a>
-				</Link>
+				<Heading>Politics Page</Heading>
+				<NavButtonInterface>
+					<NavButton href="/apps/politics/campaign-expenditures">
+						Campaign Expenditures
+					</NavButton>
+				</NavButtonInterface>
 			</main>
 		</Layout>
 	);
