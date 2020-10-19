@@ -1,16 +1,18 @@
-import Link from "next/link";
-import { Layout } from "../../components/layout";
+import { Heading } from "@chakra-ui/core";
+
+// components
+import { Layout, NavButton, NavButtonInterface } from "../../components/layout";
 
 const AppsPage: React.FC = () => {
 	return (
 		<Layout>
 			<main>
-				<h1>Apps Page</h1>
-				<Link href="/apps/politics">
-					<a>
-						<h2>Politics</h2>
-					</a>
-				</Link>
+				<Heading>Apps</Heading>
+				<NavButtonInterface>
+					<NavButton href="/apps/politics">Politics</NavButton>
+					<NavButton>Economics (inactive)</NavButton>
+					<NavButton>Environment (inactive)</NavButton>
+				</NavButtonInterface>
 			</main>
 		</Layout>
 	);

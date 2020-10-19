@@ -1,6 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { Text } from "rebass";
+import {
+	Accordion,
+	AccordionIcon,
+	AccordionItem,
+	AccordionHeader,
+	AccordionPanel,
+	Box,
+	Checkbox,
+	Divider,
+	Flex,
+	Text,
+	useColorMode,
+	useTheme,
+} from "@chakra-ui/core";
 import { Fragment } from "react";
 
 // components
@@ -21,35 +34,61 @@ const CampaignResultsList: React.FC<IProps> = ({
 	data,
 	selectedNodes,
 	handleSelectedNodes,
-	handleHoveredNode
+	handleHoveredNode,
 }) => {
-
+	const { colorMode } = useColorMode();
+	const theme = useTheme();
 	const renderCascade = (data: ITreeNode): React.ReactNode => {
 		return (
-			data.children
-				? data.children.map((d: ITreeNode) => (
-					<Fragment key={d.title}>
-						<ListItem
-							onClick={() => handleSelectedNodes(d)}
-							style={{
-								color: selectedNodes.includes(d) ? "red" : "black"
-							}}
-							onMouseOver={() => handleHoveredNode(d)}
-							onMouseOut={() => handleHoveredNode(null)}
-						>
-							{d.title}
-						</ListItem>
-						<Text ml={24}>{renderCascade(d)}</Text>
-					</Fragment>
-				))
-				: <>
-						<Text mb={3} >{`$${data.size ? data.size.toLocaleString() : ""}`}</Text>
-					</>
-		)};
+			data.children &&
+			data.children.map((d: ITreeNode) =>
+				!d.size ? (
+					<Flex>
+						<Checkbox
+							isChecked={selectedNodes.includes(d)}
+							onChange={() => handleSelectedNodes(d)}
+						/>
+
+						<AccordionItem key={d.title} width="100%">
+							<AccordionHeader
+								style={{
+									color:
+										selectedNodes.includes(d) && theme.colors.alert[colorMode],
+								}}
+							>
+								<Text>{d.title}</Text>
+								<AccordionIcon />
+							</AccordionHeader>
+
+							<AccordionPanel>
+								<Text ml={8}>{renderCascade(d)}</Text>
+							</AccordionPanel>
+						</AccordionItem>
+					</Flex>
+				) : (
+					<Box>
+						<Divider />
+						<Flex justifyContent="space-between">
+							<Box size="1/2">
+								<Text mb={3}>{d.title}</Text>
+							</Box>
+							<Box size="1/2">
+								<Text mb={3}>{`${
+									d.size ? `$${d.size.toLocaleString()}` : ""
+								}`}</Text>
+							</Box>
+						</Flex>
+					</Box>
+				)
+			)
+		);
+	};
 
 	return (
 		<>
-			{data && renderCascade(data)}
+			<Accordion defaultIndex={[0]} allowMultiple>
+				{data && renderCascade(data)}
+			</Accordion>
 		</>
 	);
 };

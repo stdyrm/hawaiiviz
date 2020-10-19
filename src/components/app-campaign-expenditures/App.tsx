@@ -1,6 +1,12 @@
 import { useState, useEffect, Fragment } from "react";
-import { Box, Heading, Text } from "rebass";
-import { Select } from "@rebass/forms";
+import {
+	Box,
+	Flex,
+	Heading,
+	Select,
+	Text,
+	useColorMode,
+} from "@chakra-ui/core";
 
 // services and models
 import { pivotData } from "../../services/data-transform";
@@ -9,13 +15,14 @@ import { pivotData } from "../../services/data-transform";
 import { CANDIDATES_MAYOR } from "../../reference/politics";
 
 // components
-import {
-	CampaignTreemap,
-	CampaignResultsList,
-} from ".";
+import { CampaignTreemap, CampaignResultsList } from ".";
+import { Layout } from "../layout";
 
 // interface
-import { IProps, IRawData } from "../../pages/apps/politics/campaign-expenditures";
+import {
+	IProps,
+	IRawData,
+} from "../../pages/apps/politics/campaign-expenditures";
 
 export interface ITreeNode {
 	title: string;
@@ -44,9 +51,9 @@ const App: React.FC<IProps> = ({ rawData }) => {
 	);
 	const [selectedNodes, setSelectedNodes] = useState<ITreeNode[] | any[]>([]);
 	const [hoveredNode, setHoveredNode] = useState<ITreeNode | null>(null);
-	
+	const { colorMode } = useColorMode();
+
 	const filterData = (rawData: IRawData[], filter: IFilter) => {
-		// if (!filter) return;
 		if (filter.office === "All") {
 			const revData = pivotData(
 				rawData,
@@ -78,10 +85,11 @@ const App: React.FC<IProps> = ({ rawData }) => {
 
 	const handleSelectedNodes = (sNode: ITreeNode): void => {
 		if (selectedNodes.includes(sNode)) {
-			setSelectedNodes(prevState => prevState.filter((entry) => entry !== sNode));
-		}
-		else {
-			setSelectedNodes(prevState => [...prevState, sNode]);
+			setSelectedNodes((prevState) =>
+				prevState.filter((entry) => entry !== sNode)
+			);
+		} else {
+			setSelectedNodes((prevState) => [...prevState, sNode]);
 		}
 	};
 
@@ -95,7 +103,7 @@ const App: React.FC<IProps> = ({ rawData }) => {
 	}, [filter]);
 
 	return (
-		<Fragment>
+		<>
 			<Heading>Campaign Expenditures</Heading>
 			<Text>
 				These are the campaign expenditures for all candidates in the Hawaii
@@ -105,14 +113,14 @@ const App: React.FC<IProps> = ({ rawData }) => {
 				Many candidates who have won the primary election have a longer
 				timeframe for expenditures.
 			</Text>
-			<Box width={0.25}>
+			<Box width={[0.5, 0.25]}>
 				<Select
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
 						setFilter({ office: e.target.value })
 					}
 					value={filter.office && filter.office}
+					bg={colorMode === "dark" ? "bgColor.dark" : "bgColor.light"}
 				>
-					{/* <option value="">--</option> */}
 					<option value="All">All</option>
 					<option value="Hawaii Mayor">Hawaii Mayor</option>
 					<option value="Honolulu Mayor">Honolulu Mayor</option>
@@ -126,26 +134,31 @@ const App: React.FC<IProps> = ({ rawData }) => {
 					<option value="Prosecuting Attorney">Prosecuting Attorney</option>
 				</Select>
 			</Box>
-			{data && (
-				<Box>
-					<CampaignTreemap
-						data-cy="campaign-treemap"
-						data={data}
-						selectedNodes={selectedNodes}
-						handleSelectedNodes={handleSelectedNodes}
-						hoveredNode={hoveredNode}
-						handleHoveredNode={handleHoveredNode}
-					/>
-					<CampaignResultsList
-						data={data}
-						selectedNodes={selectedNodes}
-						handleSelectedNodes={handleSelectedNodes}
-						hoveredNode={hoveredNode}
-						handleHoveredNode={handleHoveredNode}
-					/>
+			{data ? (
+				<Box display={{ lg: "flex" }}>
+					<Box size="100%">
+						<CampaignTreemap
+							data={data}
+							selectedNodes={selectedNodes}
+							handleSelectedNodes={handleSelectedNodes}
+							hoveredNode={hoveredNode}
+							handleHoveredNode={handleHoveredNode}
+						/>
+					</Box>
+					<Box size="100%">
+						<CampaignResultsList
+							data={data}
+							selectedNodes={selectedNodes}
+							handleSelectedNodes={handleSelectedNodes}
+							hoveredNode={hoveredNode}
+							handleHoveredNode={handleHoveredNode}
+						/>
+					</Box>
 				</Box>
+			) : (
+				<Text>Loading...</Text>
 			)}
-		</Fragment>
+		</>
 	);
 };
 

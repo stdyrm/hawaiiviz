@@ -1,33 +1,66 @@
 import Link from "next/link";
-import { Box, Flex } from "rebass";
+import {
+	Box,
+	Flex,
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuOptionGroup,
+	MenuItemOption,
+	MenuDivider,
+	Text,
+} from "@chakra-ui/core";
 
 // components
-import NavLink from "./NavLink";
+import { NavLink, ThemeToggler } from ".";
 
-const Navbar: React.FC = ({ children }) => {
+const NavBar: React.FC = ({ children }) => {
 	return (
-		<Flex
-			color="background"
-			bg="primary"
-			px={2}
-			py={1}
-			sx={{
-				alignItems: "center",
-			}}
-		>
+		<Flex color="primary" py={2} alignItems="center">
 			{children}
-			<Box mx="auto" />
-			<Link href="/">
-				<NavLink>Home</NavLink>
-			</Link>
-			<Link href="/apps">
-				<NavLink>Apps</NavLink>
-			</Link>
-			<Link href="/about">
-				<NavLink>About</NavLink>
-			</Link>
+			<Box mx="auto" bg="green.500" />
+			<Flex w="300px" justifyContent="space-between" alignItems="center">
+				<Link href="/">
+					<NavLink>Home</NavLink>
+				</Link>
+				<Menu>
+					<MenuButton as="button">Apps</MenuButton>
+					<MenuList minW="240px">
+						<MenuOptionGroup title="Categories">
+							<MenuItemOption>
+								<Link href="/apps">
+									<a>
+										<Text>All</Text>
+									</a>
+								</Link>
+							</MenuItemOption>
+						</MenuOptionGroup>
+						<MenuDivider />
+						<MenuOptionGroup title="Politics">
+							<MenuItemOption>
+								<Link href="/apps/politics">
+									<a>
+										<Text>All</Text>
+									</a>
+								</Link>
+							</MenuItemOption>
+							<MenuItemOption>
+								<Link href="/apps/politics/campaign-expenditures">
+									<a>
+										<Text>Campaign Expenditures</Text>
+									</a>
+								</Link>
+							</MenuItemOption>
+						</MenuOptionGroup>
+					</MenuList>
+				</Menu>
+				<Link href="/about">
+					<NavLink>About</NavLink>
+				</Link>
+				<ThemeToggler />
+			</Flex>
 		</Flex>
 	);
 };
 
-export default Navbar;
+export default NavBar;
