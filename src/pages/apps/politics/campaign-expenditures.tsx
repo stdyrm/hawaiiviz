@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import { Text } from "@chakra-ui/core";
 
 // services and models
 import Expenditure from "../../../../db/models/expenditure";
@@ -33,7 +34,7 @@ const getStaticProps: GetStaticProps = async () => {
 const Main: React.FC<IProps> = ({ rawData }) => {
 	return (
 		<Layout>
-			<App rawData={rawData} />
+			{rawData ? <App rawData={rawData} /> : <Text>Loading...</Text>}
 		</Layout>
 	);
 };
