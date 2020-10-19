@@ -12,7 +12,7 @@ const Home: React.FC = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<ContentBox>
-				<main data-cy="hawaiiviz">This is the main body</main>
+				<main data-cy="hawaiiviz">Visualizing information</main>
 			</ContentBox>
 		</Layout>
 	);
