@@ -1,17 +1,9 @@
 import { Box } from "rebass";
-import theme from "../../styles/theme";
+import customTheme from "../../styles/theme";
 
 const ContentBox: React.FC = ({ children }) => {
 	return (
-		<Box
-			sx={{
-				mx: "auto",
-				my: 3,
-				px: 3,
-				color: theme.colors.text[4],
-				fontFamily: "body"
-			}}
-		>
+		<Box mx="auto" my={4} px={2}>
 			{children}
 		</Box>
 	);
